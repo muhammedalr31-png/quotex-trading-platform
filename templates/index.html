@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة Quotex التداول</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- قسم تسجيل الدخول -->
+        <div id="login-container" class="container active">
+            <div class="login-box">
+                <div class="login-header">
+                    <h1>💰 منصة Quotex</h1>
+                    <p>Quotex Trading Platform</p>
+                </div>
+                
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">📧 البريد الإلكتروني:</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="your@email.com" 
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">🔐 كلمة المرور:</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            placeholder="••••••••" 
+                            required
+                            autocomplete="current-password"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mode">⚙️ الوضع:</label>
+                        <select id="mode" name="mode">
+                            <option value="demo">📊 تجريبي (Demo) - آمن للاختبار</option>
+                            <option value="real">💵 حقيقي (Real) - أموال حقيقية</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-large">
+                        🔗 تسجيل الدخول
+                    </button>
+                </form>
+                
+                <div id="login-error" class="error-message" style="display: none;"></div>
+                
+                <div class="login-footer">
+                    <p>⚠️ تحذير: لا تشارك بيانات الدخول مع أحد!</p>
+                    <p>تطبيق غير رسمي - استخدم على مسؤوليتك الخاصة</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- قسم لوحة التحكم -->
+        <div id="dashboard-container" class="container">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>💰 منصة Quotex</h1>
+                    <p id="user-email"></p>
+                </div>
+                <div class="header-right">
+                    <button id="logout-btn" class="btn btn-danger">🔌 تسجيل الخروج</button>
+                </div>
+            </header>
+            
+            <main class="dashboard-main">
+                <!-- قسم الإحصائيات -->
+                <section class="section stats-section">
+                    <div class="stat-card">
+                        <div class="stat-icon">💵</div>
+                        <div class="stat-content">
+                            <p class="stat-label">الرصيد الحالي</p>
+                            <p class="stat-value" id="balance-display">$0.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <p class="stat-label">عدد الصفقات</p>
+                            <p class="stat-value" id="trades-count">0</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">⚙️</div>
+                        <div class="stat-content">
+                            <p class="stat-label">الوضع</p>
+                            <p class="stat-value" id="mode-display">-</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- قسم التداول -->
+                <section class="section trading-section">
+                    <h2>📊 تنفيذ صفقة جديدة</h2>
+                    
+                    <form id="trade-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="asset">الأصل (Asset)</label>
+                                <select id="asset" name="asset" required>
+                                    <option value="EURUSD">🇪🇺 EURUSD - يورو/دولار</option>
+                                    <option value="GBPUSD">🇬🇧 GBPUSD - جنيه/دولار</option>
+                                    <option value="USDJPY">🇯🇵 USDJPY - دولار/ين</option>
+                                    <option value="AUDUSD">🇦🇺 AUDUSD - دولار أسترالي</option>
+                                    <option value="USDCAD">🇨🇦 USDCAD - دولار كندي</option>
+                                    <option value="GOLD">🏆 GOLD - الذهب</option>
+                                    <option value="OIL">🛢️ OIL - النفط</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="amount">المبلغ ($)</label>
+                                <input 
+                                    type="number" 
+                                    id="amount" 
+                                    name="amount" 
+                                    value="1" 
+                                    min="0.1" 
+                                    step="0.1" 
+                                    required
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="direction">الاتجاه</label>
+                                <select id="direction" name="direction" required>
+                                    <option value="call">📈 شراء (Call) - صعود</option>
+                                    <option value="put">📉 بيع (Put) - هبوط</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="duration">المدة (دقائق)</label>
+                                <select id="duration" name="duration" required>
+                                    <option value="1">1 دقيقة</option>
+                                    <option value="5">5 دقائق</option>
+                                    <option value="15">15 دقيقة</option>
+                                    <option value="30">30 دقيقة</option>
+                                    <option value="60">ساعة واحدة</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-success btn-large">
+                            ✅ تنفيذ الصفقة
+                        </button>
+                    </form>
+                    
+                    <div id="trade-error" class="error-message" style="display: none;"></div>
+                    <div id="trade-success" class="success-message" style="display: none;"></div>
+                </section>
+                
+                <!-- قسم السجل -->
+                <section class="section history-section">
+                    <h2>📋 سجل الصفقات الأخيرة</h2>
+                    <div id="trades-history" class="trades-list">
+                        <p class="empty-message">لا توجد صفقات حتى الآن</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Toast إشعارات -->
+    <div id="toast" class="toast"></div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

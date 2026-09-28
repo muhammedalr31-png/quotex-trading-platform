@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    direction: rtl;
+}
+
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.container {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.container.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === تسجيل الدخول === */
+
+.login-box {
+    max-width: 500px;
+    margin: 60px auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.login-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.login-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.login-header p {
+    font-size: 0.95em;
+    opacity: 0.9;
+}
+
+#login-form {
+    padding: 40px 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1em;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.login-footer {
+    padding: 20px 30px;
+    background: #f9f9f9;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.login-footer p {
+    margin: 5px 0;
+}
+
+/* === لوحة التحكم === */
+
+.dashboard-header {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.header-left p {
+    color: #666;
+    font-size: 1em;
+}
+
+.header-right {
+    text-align: left;
+}
+
+.dashboard-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* === الإحصائيات === */
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-right: 5px solid #667eea;
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    font-size: 3em;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    color: #999;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    color: #333;
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+/* === الأقسام === */
+
+.section {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.5em;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 15px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* === الأزرار === */
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-large {
+    padding: 14px 40px;
+    font-size: 1.1em;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    width: 100%;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(17, 153, 142, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(235, 51, 73, 0.4);
+}
+
+/* === الرسائل === */
+
+.error-message {
+    background: #fef5f5;
+    color: #eb3349;
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 4px solid #eb3349;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.success-message {
+    background: #f0f9f7;
+    color: #11998e;
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 4px solid #11998e;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+/* === سجل الصفقات === */
+
+.trades-list {
+    display: grid;
+    gap: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.trade-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border-right: 4px solid #667eea;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.trade-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.trade-asset {
+    font-weight: 600;
+    color: #333;
+}
+
+.trade-time {
+    font-size: 0.85em;
+    color: #999;
+}
+
+.trade-direction {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-align: center;
+}
+
+.trade-direction.call {
+    background: #d4edda;
+    color: #155724;
+}
+
+.trade-direction.put {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-size: 1.1em;
+}
+
+/* === Toast === */
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: #333;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.3s;
+    z-index: 1000;
+    font-weight: 500;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toast.success {
+    background: #11998e;
+}
+
+.toast.error {
+    background: #eb3349;
+}
+
+/* === Responsive === */
+
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .header-right {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .header-right .btn {
+        width: 100%;
+    }
+    
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .trade-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-box {
+        margin: 30px auto;
+    }
+    
+    body {
+        padding: 10px;
+    }
+}
